@@ -1,0 +1,41 @@
+name: Secure CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: GitLeaks Scan
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: Semgrep Scan
+        uses: returntocorp/semgrep-action@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: NPM Audit
+        run: npm audit --audit-level=high
+
+      - name: Build Docker Image
+        run: docker build -t secure-nodejs-app:v1 .
+
+      - name: Trivy Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: secure-nodejs-app:v1
+          format: table
+          exit-code: 0
