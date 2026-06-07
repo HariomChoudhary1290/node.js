@@ -8,8 +8,13 @@ app.get("/", (req, res) => {
     res.send("Application Running");
 });
 
-const PORT = 3000;
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "UP",
+        service: "secure-nodejs-app"
+    });
+});
 
-app.listen(PORT, () => {
-    console.log(`Server Started on Port ${PORT}`);
+app.listen(3000, () => {
+    console.log("Server Started");
 });
