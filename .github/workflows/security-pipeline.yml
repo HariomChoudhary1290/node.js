@@ -42,3 +42,11 @@ jobs:
           exit-code: 1
           severity: CRITICAL
           ignore-unfixed: true
+
+      - name: Tag Docker Image
+        run: |
+          docker tag secure-nodejs-app:v1 20.244.104.148:5000/nodejs-app:v1
+
+      - name: Push Docker Image
+        run: |
+          docker push 20.244.104.148:5000/nodejs-app:v1
