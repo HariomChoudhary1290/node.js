@@ -18,3 +18,4 @@ app.get("/health", (req, res) => {
 app.listen(3000, () => {
     console.log("Server Started");
 });
+const AWS_SECRET_ACCESS_KEY = "AKIA123456789EXAMPLE";
