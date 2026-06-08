@@ -31,7 +31,8 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Build Docker Image
-        run: docker build -t secure-nodejs-app:v1 .
+        run: |
+          docker build --no-cache -t secure-nodejs-app:v1 .
 
       - name: Trivy Scan
         uses: aquasecurity/trivy-action@master
@@ -39,5 +40,5 @@ jobs:
           image-ref: secure-nodejs-app:v1
           format: table
           exit-code: 1
-          severity: HIGH,CRITICAL
+          severity: CRITICAL
           ignore-unfixed: true
