@@ -38,4 +38,6 @@ jobs:
         with:
           image-ref: secure-nodejs-app:v1
           format: table
-          exit-code: 0
+          exit-code: 1
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
