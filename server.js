@@ -18,4 +18,4 @@ app.get("/health", (req, res) => {
 app.listen(3000, () => {
     console.log("Server Started");
 });
-const password = "MySuperSecretPassword123";
+const github_token = "ghp_123456789012345678901234567890123456";
