@@ -9,6 +9,6 @@
     "@azure/cosmos": "^4.9.3",
     "dotenv": "^17.4.2",
     "express": "^5.0.0",
-    "mongoose": "^8.0.0"
+    "mongoose": "^9.7.2"
   }
 }
